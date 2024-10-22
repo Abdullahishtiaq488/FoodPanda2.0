@@ -2,26 +2,102 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
-  color: var(--foreground);
-  background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Custom scrollbar styling */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+  /* Hide scrollbar for Chrome, Safari, and Opera */
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  /* Hide scrollbar for Internet Explorer and Edge */
+  scrollbar-width: none;
+  /* Hide scrollbar for Firefox */
+}
+
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
 }
+
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+  }
+}
+
+
+
+
+
+
+
+
+/* You can define different weights and styles similarly */
+
+
+
+/* custom-css */
+
+.signup-btn{
+  background-color: #e21b70;
+  color: white;
+}
+
+.hero-container{
+  width: 80%;
+  margin: auto;
+}
+.slick-prev:before, .slick-next:before{
+  color:black !important;
+}
+.slick-prev {
+  left: -3px;
+  z-index: 99;
+  font-size: 30px !important;
+}
+.slick-next {
+  right: 27px;
+}
+.slick-prev:before, .slick-next:before {
+  font-family: 'slick';
+  font-size: 50px;
+  font-family: auto;
+}
+
+@media screen and (max-width: 476px) {
+  .nav.flex.list-none{
+    display: block;
+  }
+  .w-50 {
+    width: 93%;
+    margin: auto;
+    padding-left: 0%;
+}
+.list-restaurebt{
+  height: 80vh !important;
+}
+  }
+@media screen and (max-width: 768px) {
+  .nav.flex.list-none{
+    text-align: center;
+  }
+  .w-50 {
+    width: 85%;
+}
+.list-restaurebt{
+  height: 72vh ;
+}
+.hero-container{
+  height: 50vh !important;
+}
+}
+
+

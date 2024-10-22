@@ -1,0 +1,44 @@
+[
+    {
+      "id": 1,
+      "name": "Islamabad",
+      "image": "/images/places/Islamabad.webp"
+    },
+    {
+      "id": 2,
+      "name": "Karachi",
+      "image": "/images/places/karachi.webp"
+    },
+    {
+      "id": 3,
+      "name": "Lahore",
+      "image": "/images/places/lahore.webp"
+    },
+    {
+      "id": 4,
+      "name": "Peshawar",
+      "image": "/images/places/Peshawar.webp"
+    },
+    {
+      "id": 5,
+      "name": "Rawalpindi",
+      "image": "/images/places/rawalpindi.webp"
+    },
+    {
+      "id": 6,
+      "name": "Abbottabad",
+      "image": "/images/places/abbotabad.webp"
+    },
+    {
+      "id": 7,
+      "name": "Bahawalpur",
+      "image": "/images/places/bahwlpur.webp"
+    },
+    {
+      "id": 8,
+      "name": "Dera Ghazi Khan",
+      "image": "/images/places/dig.webp"
+    }
+
+  ]
+  
