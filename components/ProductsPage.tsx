@@ -3,25 +3,27 @@
 "use client";
 
 import React, { useState } from 'react';
-import { products } from '../data/ProductsData';
 import ProductList from './ProductList';
 import ProductModal from './ProuductModel/ProductModal';
+import { ProductsPageProps } from '../types/ProductTypes';
 
-const ProductsPage: React.FC = () => {
+
+
+const ProductsPage: React.FC<ProductsPageProps> = ({ restaurant }) => {
   // Group products by category
-  const groupedProducts = products.reduce((acc, product) => {
+  const groupedProducts = restaurant.products.reduce((acc, product) => {
     const category = product.category || 'Uncategorized';
     if (!acc[category]) {
       acc[category] = [];
     }
     acc[category].push(product);
     return acc;
-  }, {} as Record<string, typeof products>);
+  }, {} as Record<string, typeof restaurant.products>);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedProduct, setSelectedProduct] = useState<typeof products[0] | null>(null);
+  const [selectedProduct, setSelectedProduct] = useState<typeof restaurant.products[0] | null>(null);
 
-  const openModal = (product: typeof products[0]) => {
+  const openModal = (product: typeof restaurant.products[0]) => {
     setSelectedProduct(product);
     setIsModalOpen(true);
   };

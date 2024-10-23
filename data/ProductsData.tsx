@@ -35,8 +35,8 @@ export interface Product {
 export const products: Product[] = [
   {
     id: 1,
-    heading: 'Summer Deal 1',
-    price: 774,
+    heading: 'Summer Deal 123',
+    price: 77434,
     content: 'Chicken Sub & 345ml Drink',
     category: "Popular",
     image: productImage1,

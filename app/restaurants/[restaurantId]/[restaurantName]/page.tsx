@@ -1,30 +1,29 @@
-// /restaurants/[cityid]/[restaurantName]/page.tsx
-
 "use client"
 import React from 'react';
 import RestaurantDetailPage from '@/components/RestaurantDetailPage';
-import { restaurantData } from '@/data/cardData';
 import { useParams } from 'next/navigation';
 
 const RestaurantDetail = () => {
     const params = useParams();  // Get params from URL
     const { restaurantName } = params;
 
-    // Find the restaurant by matching the restaurant name (case-insensitive)
-    const restaurant = restaurantData.find((r) =>
-        r.name.toLowerCase().replace(/[\s-]+/g, '-').replace(/-+/g, '-') === restaurantName
-    );
+    // Ensure restaurantName is a string before processing
+    if (typeof restaurantName !== 'string') {
+        return <div>Restaurant not found</div>;
+    }
 
+    // Extract the restaurant ID from the restaurant name in the URL
+    const restaurantId = restaurantName.toLowerCase().replace(/[\s-]+/g, '-').replace(/-+/g, '-');
 
-    // Handle the case where no restaurant is found
-    if (!restaurant) {
+    // If restaurantId doesn't exist in the restaurantMap, handle it gracefully
+    if (!restaurantId) {
         return <div>Restaurant not found</div>;
     }
 
     return (
         <section>
-            {/* Pass the found restaurant to RestaurantDetailPage */}
-            <RestaurantDetailPage restaurant={restaurant} />
+            {/* Pass the restaurantId to RestaurantDetailPage */}
+            <RestaurantDetailPage restaurantId={restaurantId} />
         </section>
     );
 };

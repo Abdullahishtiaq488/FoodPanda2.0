@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { Product } from '@/data/ProductsData';
+import { Product } from '@/types/ProductTypes';
 import { Card, CardContent } from '@/components/ui/card';
 
 interface ProductCardProps {

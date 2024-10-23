@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { cityData } from "../data/cardData"; // Import cityData
+import { cityData } from "@/data/city/cityData"; // Import cityData
 import CityCard from "@/components/CityCard"; // Import CityCard component
 import HeroSection from "@/components/HeroSection";
 

@@ -35,7 +35,7 @@ const AvailableDeals: React.FC<RestaurantLayoutProps> = ({ restaurant }) => {
                     ref={scrollContainerRef}
                     className="flex items-center gap-4 overflow-x-auto scroll-smooth scrollbar-hide"
                 >
-                    {restaurant.deals.slice(0, 3).map((deal, index) => (
+                    {restaurant.deals.map((deal, index) => (
                         <div
                         key={index}
                         className="p-4 border rounded-lg shadow-md bg-white w-64 min-w-[16rem] hover:bg-pink-100 transition-all duration-300"

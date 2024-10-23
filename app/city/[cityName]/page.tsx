@@ -1,51 +1,51 @@
+// app/city/[cityName]/page.tsx
 "use client";
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { restaurantMap } from '@/data/restaurants';
 import RestaurantCard from '@/components/RestaurantCard';
-import { restaurantData, cityData } from '@/data/cardData';
-import { useParams } from 'next/navigation';
 import Link from 'next/link';
 
-const CityPage = () => {
-    // Get the cityName from the dynamic route using useParams
-    const params = useParams();
-    const cityName = params.cityName;
+const CityPage = ({ params }: { params: { cityName: string } }) => {
+    const [restaurants, setRestaurants] = useState<any[]>([]);
+    const [loading, setLoading] = useState(true);
 
-    // Find the corresponding city data based on the cityName from the URL
-    const city = cityData.find(city => city.cityName.toLowerCase() === cityName);
+    useEffect(() => {
+        const loadRestaurants = async () => {
+            const restaurantDataPromises = Object.keys(restaurantMap).map(async (key) => {
+                const restaurantData = await restaurantMap[key]();
+                return restaurantData.default; // Assuming default export
+            });
 
-    // If the city doesn't exist, display a message
-    if (!city) {
-        return <div className="p-4 md:p-8">City not found.</div>;
+            const restaurantData = await Promise.all(restaurantDataPromises);
+            setRestaurants(restaurantData);
+            setLoading(false);
+        };
+
+        loadRestaurants();
+    }, []);
+
+    if (loading) {
+        return <div>Loading...</div>;
     }
 
-    // Filter restaurants based on the city's ID
-    const filteredRestaurants = restaurantData.filter(restaurant => restaurant.cityId === city.id);
-
     return (
-        <div className="p-4 md:p-8">
-            <h1 className="text-2xl font-bold mb-4">Restaurants in {city.cityName}</h1>
-            <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {filteredRestaurants.map((restaurant) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
+            {restaurants.map((restaurant) => {
+                const restaurantName = restaurant.name || "Unnamed Restaurant"; // Fallback name
+                return (
                     <Link
-                        href={`/restaurants/${restaurant.id}/${restaurant.name.toLowerCase().replace(/\s+/g, '-').replace(/-+/g, '-')}`}
+                        href={`/restaurants/${restaurant.id}/${restaurantName.toLowerCase().replace(/\s+/g, '-').replace(/-+/g, '-')}`}
                         key={restaurant.id}
                     >
                         <RestaurantCard
-                            id={restaurant.id}
-                            cityId={restaurant.cityId}
                             image={restaurant.image}
-                            logo={restaurant.logo}
-                            name={restaurant.name}
+                            name={restaurantName}
                             cuisine={restaurant.cuisine}
-                            address={restaurant.address}
-                            deals={restaurant.deals}
-                            rating={restaurant.rating}
-                            tags={restaurant.tags}
-                            closed={restaurant.closed}
+                            closed={restaurant.closed} // You can set this based on your logic
                         />
                     </Link>
-                ))}
-            </div>
+                );
+            })}
         </div>
     );
 };

@@ -1,12 +1,16 @@
 "use client";
 import React, { useRef, useState, useEffect } from 'react';
-import { products } from '../data/ProductsData';
+import { RestaurantData } from '../types/ProductTypes'; // Import type for restaurant
 
-const NavStrip: React.FC = () => {
+interface NavStripProps {
+  restaurant: RestaurantData; // Accept restaurant data as a prop
+}
+
+const NavStrip: React.FC<NavStripProps> = ({ restaurant }) => {
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
 
-  // Group products by category and count the number of products in each category
-  const categories = products.reduce((acc, product) => {
+  // Get categories from the restaurant's products
+  const categories = restaurant.products.reduce((acc, product) => {
     const category = product.category || 'Uncategorized';
     acc[category] = (acc[category] || 0) + 1;
     return acc;
@@ -36,13 +40,13 @@ const NavStrip: React.FC = () => {
     }
   };
 
-  const STICKY_NAVBAR_HEIGHT = 80; // well adjust thsi value based on the heights of our sticky navbars
+  const STICKY_NAVBAR_HEIGHT = 80;
 
   const handleCategoryClick = (category: string) => {
     const element = document.getElementById(category);
     if (element) {
-      const elementTop = element.getBoundingClientRect().top + window.scrollY; // the top of categories should be customized
-      window.scrollTo({ top: elementTop - STICKY_NAVBAR_HEIGHT, behavior: 'smooth' }); // Scroll to the new pos...
+      const elementTop = element.getBoundingClientRect().top + window.scrollY;
+      window.scrollTo({ top: elementTop - STICKY_NAVBAR_HEIGHT, behavior: 'smooth' });
       setActiveCategory(category);
     }
   };
@@ -110,29 +114,11 @@ const NavStrip: React.FC = () => {
           />
         </div>
 
-        {/* Search button */}
-        <div className="md:hidden">
-          <button className="bg-white rounded-full p-2 shadow-lg hover:bg-secondary-lighter">
-            <svg
-              className="w-5 h-5 text-secondary"
-              fill="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fillRule="evenodd"
-                clipRule="evenodd"
-                d="M10 2a8 8 0 105.293 14.293l4.12 4.12a1 1 0 001.414-1.414l-4.12-4.12A8 8 0 0010 2zm-6 8a6 6 0 1111.314 3.95l.022-.022a6 6 0 01-8.49-8.49L4.05 10H4z"
-              />
-            </svg>
-          </button>
-        </div>
-
         <div className="relative flex items-center justify-center overflow-hidden flex-grow px-6 h-[50px] py-2">
           {!isAtLeft && (
             <button
               onClick={scrollLeft}
-              className="absolute left-1  border p-3 border-secondary-lighter rounded-full bg-white flex items-center justify-center shadow-lg hover:bg-secondary-lighter transition-all duration-200 hover:p-4 hover:-mx-1 z-5 "
+              className="absolute left-1 border p-3 border-secondary-lighter rounded-full bg-white flex items-center justify-center shadow-lg hover:bg-secondary-lighter transition-all duration-200 hover:p-4 hover:-mx-1 z-5"
             >
               <svg
                 fill="#000000"
@@ -141,7 +127,6 @@ const NavStrip: React.FC = () => {
                 viewBox="0 0 42 42"
                 xmlSpace="preserve"
                 transform="matrix(-1, 0, 0, 1, 0, 0)"
-
               >
                 <g>
                   <polygon
@@ -150,7 +135,6 @@ const NavStrip: React.FC = () => {
                   />
                 </g>
               </svg>
-
             </button>
           )}
 
@@ -185,7 +169,6 @@ const NavStrip: React.FC = () => {
                 height="15"
                 viewBox="0 0 42 42"
                 xmlSpace="preserve"
-
               >
                 <g>
                   <polygon
