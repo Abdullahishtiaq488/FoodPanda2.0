@@ -34,13 +34,13 @@ const RestaurantDetailPage: React.FC<RestaurantLayoutProps> = ({ restaurantId })
     }, [restaurantId]);
 
     if (!restaurant) {
-        return <div>Loading...</div>;
+        return <div className='min-h-[100vh]'>Loading...</div>;
     }
 
     return (
-        <section>
+        <section >
 
-            <div className="py-0 px-4 md:px-16 text-gray-500">
+            <div className="py-0 px-4 md:px-16 text-gray-500 ">
 
                 {/* Breadcrumbs */}
                 <Breadcrumbs restaurant={restaurant} />

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Option, Product } from '../../data/ProductsData';
-
 import FallbackOptions from './FallbackOptions';
 import SpecialInstructions from './SpecialInstructions';
 import ProductOption from './ProductOption';
@@ -23,29 +22,38 @@ const ProductOptions: React.FC<ProductOptionsProps> = ({ product }) => {
   const handleCheckboxChange = (optionId: number, selectedOption: string) => {
     setSelectedOptions((prev) => {
       const currentSelections = prev[optionId] || [];
-      if (currentSelections.includes(selectedOption)) {
-        return {
-          ...prev,
-          [optionId]: currentSelections.filter((item) => item !== selectedOption),
-        };
-      } else {
-        const option = product.options?.find((opt) => opt.id === optionId);
-        if (option && option.maxSelection !== 0 && currentSelections.length >= option.maxSelection) {
-          return prev; // Prevent more selections than allowed
-        }
-        return {
-          ...prev,
-          [optionId]: [...currentSelections, selectedOption],
-        };
-      }
+      const updatedSelections = currentSelections.includes(selectedOption)
+        ? currentSelections.filter((item) => item !== selectedOption)
+        : [...currentSelections, selectedOption];
+
+      return { ...prev, [optionId]: updatedSelections };
     });
+
+    // Scroll to the next option
+    scrollToNextOption(optionId);
   };
 
-  const handleRadioChange = (optionId: number) => (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleRadioChange = (optionId: number, value: string) => {
     setSelectedOptions({
       ...selectedOptions,
-      [optionId]: [event.target.value],
+      [optionId]: [value],
     });
+
+    // Scroll to the next option
+    scrollToNextOption(optionId);
+  };
+
+  const scrollToNextOption = (currentOptionId: number) => {
+    const options = product.options || [];
+    const currentIndex = options.findIndex(option => option.id === currentOptionId);
+    const nextOption = options[currentIndex + 1];
+
+    if (nextOption) {
+      const nextOptionElement = document.getElementById(`option-${nextOption.id}`);
+      if (nextOptionElement) {
+        nextOptionElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
   };
 
   return (
@@ -58,8 +66,9 @@ const ProductOptions: React.FC<ProductOptionsProps> = ({ product }) => {
             selectedOptions={selectedOptions}
             onCheckboxChange={handleCheckboxChange}
             onRadioChange={handleRadioChange}
+
           />
-        ))}
+        )) || null}
       </div>
 
       {/* Special Instructions */}
@@ -74,7 +83,7 @@ const ProductOptions: React.FC<ProductOptionsProps> = ({ product }) => {
       {/* Fallback Options */}
       {product.fallbackOptions && (
         <FallbackOptions
-          fallbackOptions={product.fallbackOptions} // Ensure this is of type FallbackOption[]
+          fallbackOptions={product.fallbackOptions}
           fallbackSelection={fallbackSelection}
           setFallbackSelection={setFallbackSelection}
         />

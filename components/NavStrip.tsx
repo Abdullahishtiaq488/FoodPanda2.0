@@ -118,7 +118,7 @@ const NavStrip: React.FC<NavStripProps> = ({ restaurant }) => {
           {!isAtLeft && (
             <button
               onClick={scrollLeft}
-              className="absolute left-1 border p-3 border-secondary-lighter rounded-full bg-white flex items-center justify-center shadow-lg hover:bg-secondary-lighter transition-all duration-200 hover:p-4 hover:-mx-1 z-5"
+              className="absolute left-1 border p-2 border-secondary-light rounded-full bg-white flex items-center justify-center shadow-lg hover:bg-secondary-lighter transition-all duration-200 hover:p-3 hover:-mx-1 z-5"
             >
               <svg
                 fill="#000000"
@@ -161,7 +161,7 @@ const NavStrip: React.FC<NavStripProps> = ({ restaurant }) => {
           {!isAtRight && (
             <button
               onClick={scrollRight}
-              className="absolute right-1 p-3 border border-gray-300 rounded-full bg-white flex items-center justify-center shadow-lg hover:bg-gray-100 transition-all duration-200 hover:p-4 hover:-mx-1"
+              className="absolute right-1 p-2 border border-secondary-light rounded-full bg-white flex items-center justify-center shadow-lg hover:bg-gray-100 transition-all duration-200 hover:p-3 hover:-mx-1"
             >
               <svg
                 fill="#000000"

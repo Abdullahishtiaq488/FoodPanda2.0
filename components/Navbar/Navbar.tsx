@@ -1,12 +1,17 @@
 import Image from 'next/image'
 import React from 'react'
 import { Button } from '../ui/button'
-import { Briefcase, BriefcaseBusiness } from 'lucide-react'
+import { BriefcaseBusiness, UserRound } from 'lucide-react'
 
 const Navbar = () => {
     return (
-        <section className='w-full h-auto overflow-hidden flex flex-row px-[4rem] shadow-lg sticky top-0 bg-white z-50'>
+        <section className='w-full h-auto overflow-hidden flex flex-row py-0 px-4 md:px-8 lg:px-16 shadow-lg sticky top-0 bg-white z-50'>
             <nav className='w-full h-[4rem] flex flex-row justify-between items-center'>
+
+                {/* Bag Icon Button */}
+                <div className='md:hidden p-2 rounded-full flex justify-center items-center hover:bg-secondary-light transition-all duration-200 hover:p-3 hover:-mx-1'>
+                        <UserRound className='w-6 h-6 text-secondary-dark' />
+                    </div>
 
                 {/* Logo */}
                 <div className='h-[1.75rem] w-[8.67rem] relative'>
@@ -16,7 +21,7 @@ const Navbar = () => {
                 {/* Buttons */}
                 <div className='flex flex-row justify-between items-center gap-5 font-medium text-sm'>
 
-                    <div className='flex flex-row justify-between items-center gap-6'>
+                    <div className='hidden md:flex flex-row justify-between items-center gap-6'>
                         {/* Log in Button */}
                         <button className='bg-white py-1.5 px-4 text-secondary-dark rounded-lg border border-secondary-dark transition-all duration-200 hover:py-2 hover:px-5 hover:-mx-1 hover:bg-secondary-lighter'>
                             Log in

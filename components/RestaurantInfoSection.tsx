@@ -89,7 +89,7 @@ const RestaurantInfoSection: React.FC<RestaurantLayoutProps> = ({ restaurant }) 
                         </span>
                         <span className=' font-semibold'>See Reviews</span>
 
-                        <button className="flex items-center space-x-2 font-semibold bg-red-300">
+                        <button className="flex items-center space-x-2 font-semibold">
                             <svg viewBox="0 0 24 24" fill="none" width="20" height="20" xmlns="http://www.w3.org/2000/svg">
                                 <circle cx="12" cy="12" r="10" stroke="#1C274C" strokeWidth="1.5" />
                                 <path d="M12 17V11" stroke="#1C274C" strokeWidth="1.5" strokeLinecap="round" />
