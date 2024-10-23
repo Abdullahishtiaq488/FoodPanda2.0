@@ -34,7 +34,7 @@ const RestaurantDetailPage: React.FC<RestaurantLayoutProps> = ({ restaurant }) =
                 {/* Available Deals Section */}
                 <AvaliableDeals restaurant={restaurant} />
             </div>
-            <div className='sticky top-0 py-0 px-0 md:px-16 shadow-lg z-20 bg-white'>
+            <div className='sticky top-[64px] py-0 px-0 md:px-16 shadow-lg z-20 bg-white'>
                 <NavStrip />
             </div>
 
@@ -44,7 +44,7 @@ const RestaurantDetailPage: React.FC<RestaurantLayoutProps> = ({ restaurant }) =
                 <div >
                     <ProductsPage />
                 </div>
-                <div className="hidden sticky top-[70px] w-[350px] h-[calc(100vh-70px)] overflow-hidden md:flex items-start justify-end shrink-0">
+                <div className="hidden sticky top-[140px] w-[350px] h-[calc(100vh-140px)] overflow-hidden md:flex items-start justify-end shrink-0">
                     <Cart />
                 </div>
             </div>

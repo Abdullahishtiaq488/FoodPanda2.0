@@ -5,7 +5,7 @@ import { Briefcase, BriefcaseBusiness } from 'lucide-react'
 
 const Navbar = () => {
     return (
-        <section className='w-full h-auto overflow-hidden flex flex-row px-[4rem] shadow-lg'>
+        <section className='w-full h-auto overflow-hidden flex flex-row px-[4rem] shadow-lg sticky top-0 bg-white z-50'>
             <nav className='w-full h-[4rem] flex flex-row justify-between items-center'>
 
                 {/* Logo */}

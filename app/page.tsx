@@ -4,11 +4,13 @@ import Link from "next/link";
 
 import { cityData } from "../data/cardData"; // Import cityData
 import CityCard from "@/components/CityCard"; // Import CityCard component
+import HeroSection from "@/components/HeroSection";
 
 
 export default function Home() {
   return (
     <section>
+      <HeroSection />
       
       <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4 md:p-8">
         {cityData.map((data) => (

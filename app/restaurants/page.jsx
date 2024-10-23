@@ -6,7 +6,7 @@ import LogoCarousel from '../../components/RestaurantComponents/LogoCarousel';
 import CuisinesCarousel from '../../components/RestaurantComponents/CuisinesCarousel';
 import SummerCarousel from '../../components/RestaurantComponents/SummerCarousel';
 import DeliveryCarousel from '../../components/RestaurantComponents/DeliveryCarousel';
-import Navbar from '../../components/RestaurantComponents/Navbar'
+
 
 
 const Restaurants = () => {
@@ -26,7 +26,7 @@ const Restaurants = () => {
 
   return (
     <>
-      <Navbar />
+      
       <div style={{ display: 'flex' }} className='bg-grey-900'>
         {/* Ensure items are passed as a prop */}
         <Sidebar items={items} className='' onFilterChange={handleFilterChange} />
