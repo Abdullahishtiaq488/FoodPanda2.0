@@ -1,5 +1,5 @@
 export interface CityData {
     id: number;
     image: any;
-    cityName: string;
+    city_name: string;
 }

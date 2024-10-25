@@ -14,11 +14,11 @@ export default function Home() {
       
       <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4 md:p-8">
         {cityData.map((data) => (
-          <Link key={data.id} href={`/city/${data.cityName.toLowerCase()}`}>
+          <Link key={data.id} href={`/city/${data.city_name.toLowerCase()}`}>
             <CityCard
               id={data.id}
               image={data.image}
-              title={data.cityName}
+              title={data.city_name}
             />
           </Link>
         ))}

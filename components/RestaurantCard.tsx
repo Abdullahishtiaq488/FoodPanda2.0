@@ -2,7 +2,7 @@ import React from 'react';
 import { RestaurantData } from '@/types/ProductTypes';
 import Image from 'next/image';
 
-const RestaurantCard: React.FC<Partial<RestaurantData>> = ({ image, name, cuisine, closed }) => {
+const RestaurantCard: React.FC<Partial<RestaurantData>> = ({ image, name, cuisine, is_closed }) => {
     return (
         <div className="relative border border-gray-300 rounded-lg overflow-hidden shadow-md w-full h-full">
             <div className="relative overflow-hidden group">
@@ -13,12 +13,12 @@ const RestaurantCard: React.FC<Partial<RestaurantData>> = ({ image, name, cuisin
                         alt={"hii"} // Changed to use name for better accessibility
                         className="object-cover"
                     />
-                    <div className={`absolute inset-0 ${closed ? 'bg-black/70' : 'bg-gradient-to-t from-black/30 to-transparent'}`}></div>
+                    <div className={`absolute inset-0 ${is_closed ? 'bg-black/70' : 'bg-gradient-to-t from-black/30 to-transparent'}`}></div>
                 </div>
 
-                {closed && (
+                {is_closed && (
                     <div className="absolute inset-0 flex text-center flex-col justify-center items-center text-white z-10 group text-lg p-2">
-                        <h3 className="font-semibold mb-2">We are closed</h3>
+                        <h3 className="font-semibold mb-2">We are is_closed</h3>
                         <button className="text-pink-500 bg-white border border-transparent px-2 py-1 rounded-lg mt-2 outline-white text-sm transition-all duration-100 ease-in-out hover:outline hover:outline-3">
                             Order for Later
                         </button>
@@ -48,7 +48,7 @@ const RestaurantCard: React.FC<Partial<RestaurantData>> = ({ image, name, cuisin
                 <p className="text-gray-600 text-sm">{cuisine}</p>
             </div>
 
-            {!closed && (
+            {!is_closed && (
                 <>
                     <div className="absolute top-3 left-3 space-y-1 z-10">
                         <span className="bg-pink-500 text-white text-xs font-bold px-2 py-1 rounded max-w-[100px] overflow-hidden whitespace-nowrap text-ellipsis block">

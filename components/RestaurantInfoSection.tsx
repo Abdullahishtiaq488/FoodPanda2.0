@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { RestaurantData } from '../data/cardData';
+import { RestaurantData } from '@/types/ProductTypes';
 import Modal from './Modaldialogue';
 
 interface RestaurantLayoutProps {

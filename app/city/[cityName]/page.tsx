@@ -41,7 +41,7 @@ const CityPage = ({ params }: { params: { cityName: string } }) => {
                             image={restaurant.image}
                             name={restaurantName}
                             cuisine={restaurant.cuisine}
-                            closed={restaurant.closed} // You can set this based on your logic
+                            is_closed={restaurant.closed} // You can set this based on your logic
                         />
                     </Link>
                 );

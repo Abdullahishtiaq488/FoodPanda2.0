@@ -1,5 +1,5 @@
 import React from 'react';
-import { Option } from '../../data/ProductsData';
+import { Option } from '@/types/ProductTypes';
 
 interface ProductOptionProps {
   option: Option;
@@ -20,16 +20,17 @@ const ProductOption: React.FC<ProductOptionProps> = ({
     <div
       id={`option-${option.id}`} // Add an ID for scrolling
       className={`px-4 py-6 border relative transition-colors duration-200 border-gray-300 ${
-        selectedOptions[option.id]?.length ? 'bg-secondary-lighter' : option.isRequired ? 'bg-primary-lighter' : 'bg-white'
+        selectedOptions[option.id]?.length ? 'bg-secondary-lighter' : option.is_required ? 'bg-primary-lighter' : 'bg-white'
       } rounded-xl shadow-sm`}
     >
       <h4 className="font-bold">
         {option.name}
+        
         {selectedOptions[option.id]?.length ? (
           <span className="absolute top-6 right-4 bg-white border border-secondary-light text-black text-xs px-2 py-1 rounded-full">
             Complete
           </span>
-        ) : option.isRequired ? (
+        ) : option.is_required ? (
           <span className="absolute top-6 right-4 bg-primary-dark text-white text-xs px-2 py-1 rounded-full">
             Required
           </span>
@@ -39,8 +40,9 @@ const ProductOption: React.FC<ProductOptionProps> = ({
           </span>
         )}
       </h4>
+      <h4 className='text-sm text-secondary-dark'>Select {option.max_selection}</h4>
       <div className="flex flex-col gap-4 mt-2 font-medium text-secondary-dark">
-        {option.maxSelection === 1 ? (
+        {option.max_selection === 1 ? (
           <div className="flex flex-col gap-2 my-2">
             {option.options.map((opt) => (
               <label

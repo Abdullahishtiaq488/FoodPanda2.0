@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Option, Product } from '../../data/ProductsData';
+import { Option, Product } from '@/types/ProductTypes';
 import FallbackOptions from './FallbackOptions';
 import SpecialInstructions from './SpecialInstructions';
 import ProductOption from './ProductOption';
@@ -72,18 +72,18 @@ const ProductOptions: React.FC<ProductOptionsProps> = ({ product }) => {
       </div>
 
       {/* Special Instructions */}
-      {product.specialInstructions && (
+      {product.special_instructions && (
         <SpecialInstructions
-          instructions={product.specialInstructions}
+          instructions={product.special_instructions}
           specialRequest={specialRequest}
           setSpecialRequest={setSpecialRequest}
         />
       )}
 
       {/* Fallback Options */}
-      {product.fallbackOptions && (
+      {product.fallback_options && (
         <FallbackOptions
-          fallbackOptions={product.fallbackOptions}
+          fallbackOptions={product.fallback_options}
           fallbackSelection={fallbackSelection}
           setFallbackSelection={setFallbackSelection}
         />

@@ -5,21 +5,21 @@ export const cityData: CityData[] = [
     {
         id: 1,
         image: cityImage,
-        cityName: 'Lahore',
+        city_name: 'Lahore',
     },
     {
         id: 2,
         image: cityImage,
-        cityName: 'Karachi',
+        city_name: 'Karachi',
     },
     {
         id: 3,
         image: cityImage,
-        cityName: 'Islamabad',
+        city_name: 'Islamabad',
     },
     {
         id: 4,
         image: cityImage,
-        cityName: 'Peshawar',
+        city_name: 'Peshawar',
     },
 ];

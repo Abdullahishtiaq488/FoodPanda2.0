@@ -23,7 +23,7 @@ const RestaurantDetail = () => {
     return (
         <section>
             {/* Pass the restaurantId to RestaurantDetailPage */}
-            <RestaurantDetailPage restaurantId={restaurantId} />
+            <RestaurantDetailPage restaurant_id={restaurantId} />
         </section>
     );
 };

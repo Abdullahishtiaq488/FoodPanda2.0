@@ -69,8 +69,8 @@ const products: Product[] = [
         content: 'Chicken Sub & 345ml Drink',
         category: "Popular",
         image: productImage1,
-        specialInstructions: 'Special requests are subject to the restaurant\'s approval. Tell us here!',
-        fallbackOptions: [
+        special_instructions: 'Special requests are subject to the restaurant\'s approval. Tell us here!',
+        fallback_options: [
           { id: 1, label: 'Remove it from my order' },
           { id: 2, label: 'Cancel the entire order' },
           { id: 3, label: 'Call me' },
@@ -80,8 +80,8 @@ const products: Product[] = [
             id: 1,
             name: 'Choose Your Sub',
             subtext: 'Select 1',
-            isRequired: true,
-            maxSelection: 1,
+            is_required: true,
+            max_selection: 1,
             options: [
               { name: 'Tikka', price: 0 },
               { name: 'BBQ', price: 0 },
@@ -100,8 +100,8 @@ const products: Product[] = [
             id: 2,
             name: 'Choose Your Bread',
             subtext: 'Select 1',
-            isRequired: true,
-            maxSelection: 1,
+            is_required: true,
+            max_selection: 1,
             options: [
               { name: 'Italian', price: 0 },
               { name: 'Parmesan Oregano', price: 0 },
@@ -114,16 +114,16 @@ const products: Product[] = [
             id: 3,
             name: 'Choose Your Cheese',
             subtext: 'Select 1',
-            isRequired: true,
-            maxSelection: 1,
+            is_required: true,
+            max_selection: 1,
             options: [{ name: 'Without Cheese', price: 0 }],
           },
           {
             id: 4,
             name: 'Choose Your Veggies',
             subtext: 'Select 1',
-            isRequired: true,
-            maxSelection: 7,
+            is_required: true,
+            max_selection: 7,
             options: [
               { name: 'Onion', price: 0 },
               { name: 'Jalapeno', price: 0 },
@@ -136,8 +136,8 @@ const products: Product[] = [
             id: 5,
             name: 'Choose Your Drink',
             subtext: 'Select 1',
-            isRequired: true,
-            maxSelection: 1,
+            is_required: true,
+            max_selection: 1,
             options: [
               { name: '7up Can - 250 ml', price: 0 },
               { name: 'Pepsi Can - 250 ml', price: 0 },
@@ -149,8 +149,8 @@ const products: Product[] = [
           {
             id: 6,
             name: 'Frequently Bought Together',
-            isRequired: false,
-            maxSelection: 0,
+            is_required: false,
+            max_selection: 0,
             options: [
               { name: 'Pepsi - 345 ml', price: 120 },
               { name: '7up - 345 ml', price: 120 },
@@ -270,7 +270,7 @@ const products: Product[] = [
 // Subway - Faisal Town Data
 const subwayFaisalTownData: RestaurantData = {
   id: 2,
-  cityId: 1,
+  city_id: 1,
   name: "Subway - Faisal Town",
   cuisine: "Indian",
   image: restaurantImage,
@@ -279,7 +279,7 @@ const subwayFaisalTownData: RestaurantData = {
   rating: 4.5,
   address: "Shop No 64 - B, Block A, Faisal Town, Lahore 8526.6 km away.",
   deals: deals,
-  closed: true,
+  is_closed: true,
   products: products,
 };
 

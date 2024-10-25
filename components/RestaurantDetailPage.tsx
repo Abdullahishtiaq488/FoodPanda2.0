@@ -1,41 +1,42 @@
 // components/RestaurantDetailPage.tsx
 "use client";
-import React, { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
-import { restaurantMap } from '../data/restaurants'; // Import the restaurant map
-import { RestaurantData } from '../types/ProductTypes';
-import NavStrip from './NavStrip';
-import ProductsPage from './ProductsPage';
-import AvaliableDeals from './AvaliableDeals';
+import React, {useEffect, useState} from 'react';
+import { restaurantMap } from '@/data/restaurants';
+import { RestaurantData } from '@/types/ProductTypes';
 import Breadcrumbs from './Breadcrumbs';
 import Cart from './Cart';
+import { cityData } from '@/data/city/cityData';
 import RestaurantInfoSection from './RestaurantInfoSection';
+import AvailableDeals from './AvailableDeals';
+import NavStrip from './NavStrip';
+import ProductsPage from './ProductsPage';
 
-// Define the props type for the RestaurantLayout component
 interface RestaurantLayoutProps {
-    restaurantId: string; // Get restaurantId from the route or props
+    restaurant_id: string; // Renamed to snake_case
 }
 
-const RestaurantDetailPage: React.FC<RestaurantLayoutProps> = ({ restaurantId }) => {
+const RestaurantDetailPage: React.FC<RestaurantLayoutProps> = ({ restaurant_id }) => {
     const [restaurant, setRestaurant] = useState<RestaurantData | null>(null);
 
     useEffect(() => {
-        // Load the restaurant data dynamically based on the restaurantId
         const loadRestaurantData = async () => {
-            if (restaurantMap[restaurantId]) {
-                const module = await restaurantMap[restaurantId]();
-                setRestaurant(module.default); // Assuming the default export is the data
+            if (restaurantMap[restaurant_id]) {
+                const module = await restaurantMap[restaurant_id]();
+                setRestaurant(module.default);
             } else {
-                console.error(`No data found for restaurant: ${restaurantId}`);
+                console.error(`No data found for restaurant: ${restaurant_id}`);
             }
         };
 
         loadRestaurantData();
-    }, [restaurantId]);
+    }, [restaurant_id]);
 
     if (!restaurant) {
         return <div className='min-h-[100vh]'>Loading...</div>;
     }
+
+    // Move city finding inside the condition where restaurant exists
+    const city = cityData.find(city => city.id === restaurant.city_id);
 
     return (
         <section >
@@ -43,7 +44,7 @@ const RestaurantDetailPage: React.FC<RestaurantLayoutProps> = ({ restaurantId })
             <div className="py-0 px-4 md:px-16 text-gray-500 ">
 
                 {/* Breadcrumbs */}
-                <Breadcrumbs restaurant={restaurant} />
+                <Breadcrumbs restaurant={restaurant} city={city}/>
 
                 {/* Main Content */}
                 <RestaurantInfoSection restaurant={restaurant} />
@@ -51,7 +52,7 @@ const RestaurantDetailPage: React.FC<RestaurantLayoutProps> = ({ restaurantId })
                 <hr className='-mx-4 md:-mx-16 bg-gray-600' />
 
                 {/* Available Deals Section */}
-                <AvaliableDeals restaurant={restaurant} />
+                <AvailableDeals restaurant={restaurant} />
             </div>
 
 

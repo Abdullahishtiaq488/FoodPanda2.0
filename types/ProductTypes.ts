@@ -11,7 +11,7 @@ export interface Deal {
 // Interface for Restaurant Data
 export interface RestaurantData {
     id: number;
-    cityId: number;
+    city_id: number;
     name: string;
     image: any; // Change to appropriate type if using a different method for images
     logo: any; // Change to appropriate type if using a different method for images
@@ -20,7 +20,7 @@ export interface RestaurantData {
     rating: number;
     address: string;
     deals: Deal[];
-    closed?: boolean;
+    is_closed?: boolean;
 }
 
 // Interface for Product Options
@@ -28,8 +28,8 @@ export interface Option {
     id: number;
     name: string;
     subtext?: string;
-    isRequired: boolean;
-    maxSelection: number; // 0 means unlimited selection
+    is_required: boolean;
+    max_selection: number; // 0 means unlimited selection
     options: { name: string; price: number }[];
 }
 
@@ -42,7 +42,7 @@ export interface FallbackOptions {
 // Interface for Product Data
 export interface RestaurantData {
     id: number;
-    cityId: number;
+    city_id: number;
     name: string;
     image: any;
     logo: any;
@@ -51,7 +51,7 @@ export interface RestaurantData {
     rating: number;
     address: string;
     deals: Deal[];
-    closed?: boolean;
+    is_closed?: boolean;
     products: Product[]; // Link products to the restaurant
 }
 
@@ -68,7 +68,7 @@ export interface Product {
     content: string;
     category?: string;
     image: any;
-    specialInstructions?: string;
-    fallbackOptions?: FallbackOptions[];
+    special_instructions?: string;
+    fallback_options?: FallbackOptions[];
     options?: Option[]; // Array of option groups for customizations
 }

@@ -4,7 +4,7 @@ import Image from 'next/image';
 import clsx from 'clsx';
 import { Button } from '../ui/button';
 import ProductOptions from './ProductOptions'; // Import ProductOptions component
-import { Product } from '../../data/ProductsData'; // Import Product type
+import { Product } from '@/types/ProductTypes'; // Import Product type
 
 interface ProductModalProps {
   isModalOpen: boolean;
