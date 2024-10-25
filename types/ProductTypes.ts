@@ -1,5 +1,4 @@
-// types.ts
-import { ImageProps } from 'next/image'; // If using Next.js for images
+
 
 // Interface for Deals
 export interface Deal {
